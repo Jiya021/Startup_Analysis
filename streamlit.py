@@ -105,7 +105,7 @@ def load_investor_detail(investor):
         st.pyplot(fig)
     with col2:
         # verticals invested in
-        vertical_series=df[df["investors"].str.contains("investor")].groupby("vertical")["amount"].sum()
+        vertical_series=(df[df["investors"].str.contains("investor")].groupby("vertical")["amount"].sum().nlargest(7))
         st.subheader("Sectors Invested In")
         fig1, ax1 = plt.subplots()
         ax1.pie(vertical_series,labels=vertical_series.index,autopct="%0.1f%%")
@@ -121,7 +121,7 @@ def load_investor_detail(investor):
         st.pyplot(fig2)
     with col4:
         # city invested in
-        city_series=df[df["investors"].str.contains("investor")].groupby("city")["amount"].sum()
+        city_series=df[df["investors"].str.contains("investor")].groupby("city")["amount"].sum().nlargest(7)
         st.subheader("Cities Invested In")
         fig3, ax3 = plt.subplots()
         ax3.pie(city_series,labels=city_series.index,autopct="%0.1f%%")
