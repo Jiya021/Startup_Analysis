@@ -42,9 +42,12 @@ def load_overall_analysis():
         temp_df=df.groupby(["year","month"])["amount"].count().reset_index()
 
     temp_df["x_axis"]=temp_df["month"].astype("str") + '-' + temp_df["year"].astype("str")
+
     fig5, ax5 = plt.subplots()
     ax5.plot(temp_df["x_axis"],temp_df["amount"])
-
+    ax5.tick_params(axis='x', labelsize=4)
+    ax5.tick_params(axis='y', labelsize=7)
+    fig5.set_figheight(3)    
     plt.xticks(rotation="vertical")
     st.pyplot(fig5)
 
