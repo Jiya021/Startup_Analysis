@@ -136,6 +136,7 @@ def load_investor_detail(investor):
     st.subheader("YOY Investment")
     fig4, ax4 = plt.subplots()
     ax4.plot( year_series.index,year_series.values)
+    fig4.set_figheight(3)
     st.pyplot(fig4)
 
 
